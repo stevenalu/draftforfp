@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>E-Vura | My Health Journey</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <header>
+    <h1>E-Vura</h1>
+    <p>Your Smart Healthcare Connection</p>
+  </header>
+
+  <main>
+    <section class="auth-selection" id="auth-selection">
+      <h2>Welcome to E-Vura</h2>
+      <p>Select your role to continue</p>
+      <div class="buttons">
+        <button type="button" onclick="showForm('doctor')">I’m a Doctor</button>
+        <button type="button" onclick="showForm('patient')">I’m a Patient</button>
+      </div>
+    </section>
+
+    <section class="auth-forms hidden" id="auth-forms">
+      <h2 id="form-title">Login / Sign Up</h2>
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          <div class="flash-messages">
+            {% for category, message in messages %}
+              <p class="flash {{ category }}">{{ message }}</p>
+            {% endfor %}
+          </div>
+          {% endif %}
+      {% endwith %}
+
+
+      <div class="form-toggle">
+        <button id="login-btn" class="active" onclick="toggleAuth('login')">Login</button>
+        <button id="signup-btn" onclick="toggleAuth('signup')">Sign Up</button>
+      </div>
+
+      <form action="" method="post" id="login-form" class="auth-form">
+        {{ login_form.hidden_tag() }}
+        {{ login_form.email }}
+        {{ login_form.password }}
+        <input type="hidden" name="form_name" value="login">
+        <input type="hidden" id="role-input-login" name="role" value="{{ role|default('') }}">
+        <button type="submit">Login</button>
+      </form>
+
+      <form action="" method="post" id="signup-form" class="auth-form hidden">
+        {{ form.hidden_tag() }}
+        {{ form.username }}
+        {{ form.email }}
+        {{ form.password }}
+        <input type="hidden" name="form_name" value="signup">
+        <input type="hidden" id="role-input-signup" name="role" value="{{ role|default('') }}">
+        <button type="submit">Create Account</button>
+      </form>
+
+      <button class="back-btn" onclick="goBack()">← Back</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 E-Vura Project | Empowering Healthcare Through Technology</p>
+  </footer>
+  <script>
+    // expose server values to JS for UI persistence
+    window.__EVURA_ROLE = "{{ role or '' }}";
+    window.__EVURA_ACTIVE = "{{ active or '' }}";
+  </script>
+
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

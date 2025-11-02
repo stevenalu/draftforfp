@@ -1,0 +1,166 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: linear-gradient(120deg, #00b4d8, #90e0ef);
+  color: #222;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+header {
+  text-align: center;
+  margin: 40px 0 20px;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  color: #fff;
+}
+
+header p {
+  color: #f1f1f1;
+  font-size: 1.1rem;
+}
+
+main {
+  width: 90%;
+  max-width: 400px;
+  background: #fff;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.auth-selection,
+.auth-forms {
+  text-align: center;
+}
+
+.auth-selection h2 {
+  margin-bottom: 10px;
+}
+
+.buttons button {
+  margin: 10px;
+  padding: 10px 20px;
+  background: #00b4d8;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.buttons button:hover {
+  background: #0096c7;
+}
+
+.auth-forms h2 {
+  margin-bottom: 20px;
+  color: #0077b6;
+}
+
+.form-toggle {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.form-toggle button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  background: #caf0f8;
+  color: #0077b6;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.form-toggle button.active {
+  background: #0077b6;
+  color: #fff;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.auth-form input {
+  padding: 10px;
+  border: 1px solid #aaa;
+  border-radius: 8px;
+}
+
+.auth-form button {
+  background: #0077b6;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.auth-form button:hover {
+  background: #0096c7;
+}
+
+.back-btn {
+  background: transparent;
+  border: none;
+  color: #0077b6;
+  margin-top: 15px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+footer {
+  margin-top: auto;
+  padding: 20px 0;
+  color: #fff;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.hidden {
+  display: none;
+}
+.visible {
+  display: block;
+}
+
+.flash-messages {
+  margin-bottom: 15px;
+}
+
+.flash {
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.flash.success {
+  background: #d1e7dd;
+  color: #0f5132;
+}
+
+.flash.warning {
+  background: #fff3cd;
+  color: #664d03;
+}
+
+.flash.danger {
+  background: #f8d7da;
+  color: #842029;
+}

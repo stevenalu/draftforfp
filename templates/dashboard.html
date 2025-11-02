@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>E-Vura — Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <div class="topbar-left">
+        <h1 class="title">Welcome to E-Vura</h1>
+        <p class="subtitle">Your complete health history, accessible anytime, anywhere</p>
+      </div>
+      <div class="topbar-right">
+        <button id="bookBtn" class="btn primary">
+          <span class="icon">📅</span> Book Appointment
+        </button>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="notice">
+        <strong>Your Medical History Matters:</strong>
+        <span> E-Vura ensures your complete health journey is always accessible to your doctors, preventing repeated diagnoses and ensuring continuity of care—even when you change doctors or hospitals.</span>
+      </section>
+
+      <section class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-top">
+            <div class="stat-icon blue">📆</div>
+            <div class="stat-label">Upcoming Appointments</div>
+          </div>
+          <div class="stat-value" id="stat-appointments">0</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-top">
+            <div class="stat-icon green">🩺</div>
+            <div class="stat-label">Total Consultations</div>
+          </div>
+          <div class="stat-value" id="stat-consultations">0</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-top">
+            <div class="stat-icon purple">👩‍⚕️</div>
+            <div class="stat-label">Available Doctors</div>
+          </div>
+          <div class="stat-value" id="stat-doctors">0</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-top">
+            <div class="stat-icon orange">📂</div>
+            <div class="stat-label">Health Records</div>
+          </div>
+          <div class="stat-value" id="stat-records">0</div>
+        </div>
+      </section>
+
+      <section class="work-grid">
+        <div class="panel panel-large">
+          <div class="panel-header">
+            <h3>Upcoming Appointments</h3>
+            <div class="panel-actions"><button id="viewAllAps" class="link-btn">View All →</button></div>
+          </div>
+          <div class="panel-body" id="appointmentsContainer">
+            <!-- appointments injected here -->
+          </div>
+        </div>
+
+        <aside class="panel panel-side">
+          <div class="panel-header">
+            <h3>Recent Activity</h3>
+          </div>
+          <div class="panel-body" id="activityContainer">
+            <!-- activity injected here -->
+          </div>
+        </aside>
+      </section>
+
+      <section class="feature-row">
+        <div class="feature-card">
+          <div class="f-icon">👥</div>
+          <h4>Find Doctors</h4>
+          <p>Browse specialists</p>
+        </div>
+        <div class="feature-card">
+          <div class="f-icon">🩺</div>
+          <h4>Consultations</h4>
+          <p>View history</p>
+        </div>
+        <div class="feature-card">
+          <div class="f-icon">📄</div>
+          <h4>Medical Records</h4>
+          <p>Complete history</p>
+        </div>
+        <div class="feature-card">
+          <div class="f-icon">📅</div>
+          <h4>Appointments</h4>
+          <p>Manage schedule</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      © <span id="year"></span> E-Vura — Empowering continuity of care
+    </footer>
+  </div>
+
+  <!-- Modal for booking -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-card">
+      <h3>Schedule Appointment</h3>
+      <form id="bookForm">
+        <label>Doctor
+          <select id="doctorSelect"></select>
+        </label>
+        <label>Date
+          <input type="date" id="apptDate" required />
+        </label>
+        <label>Time
+          <input type="time" id="apptTime" required />
+        </label>
+        <label>Notes
+          <input type="text" id="apptNotes" placeholder="Short note (optional)" />
+        </label>
+
+        <div class="modal-actions">
+          <button type="button" class="btn" id="cancelModal">Cancel</button>
+          <button type="submit" class="btn primary">Confirm</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>
